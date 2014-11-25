@@ -12,17 +12,23 @@ class DemanProcedures extends AbstractMigration
      *
      * Uncomment this method if you would like to use it.
      *
-    public function change()
-    {
-    }
+    *public function change()
+    *{
+    *}
     */
     
     /**
      * Migrate Up.
      */
     public function up()
-    {
-    
+    { $scl = <<< SQL 
+        CREATE TABLE "Demand _procedures" (
+    "Id_demand" integer,
+    "Id_procedures" integer
+    );
+
+    ALTER TABLE public."Demand _procedures" OWNER TO postgres;
+SQL;
     }
 
     /**

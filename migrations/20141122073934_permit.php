@@ -12,17 +12,32 @@ class Permit extends AbstractMigration
      *
      * Uncomment this method if you would like to use it.
      *
-    public function change()
-    {
-    }
+   * public function change()
+    *{
+    *}
     */
     
     /**
      * Migrate Up.
      */
     public function up()
-    {
-    
+    {$scl = <<< SQL 
+        CREATE TABLE permit (
+    id integer NOT NULL,
+    name character varying(255),
+    prise integer
+);
+
+CREATE SEQUENCE permit_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+  ALTER SEQUENCE permit_id_seq OWNED BY permit.id;
+  ALTER TABLE ONLY permit ALTER COLUMN id SET DEFAULT nextval('permit_id_seq'::regclass);  
+   SQL;
     }
 
     /**

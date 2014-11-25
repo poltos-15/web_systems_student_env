@@ -12,18 +12,31 @@ class Admin extends AbstractMigration
      *
      * Uncomment this method if you would like to use it.
      *
-    public function change()
-    {
-    }
+    *public function change()
+    *{
+    *}
     */
     
     /**
      * Migrate Up.
      */
     public function up()
-    {
-    
-    }
+    {$scl = <<< SQL
+        CREATE TABLE admin (
+    id integer NOT NULL,
+    login character varying(50),
+    password character varying(20)
+    );
+    CREATE SEQUENCE admin_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+    ALTER SEQUENCE admin_id_seq OWNED BY admin.id;
+    ALTER TABLE ONLY admin ALTER COLUMN id SET DEFAULT nextval('admin_id_seq'::regclass);
+
+    SQL;}
 
     /**
      * Migrate Down.
