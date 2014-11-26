@@ -21,7 +21,7 @@ class DemanProcedures extends AbstractMigration
      * Migrate Up.
      */
     public function up(){ 
-$sql = <<<SQL 
+        $sql = <<<SQL
         CREATE TABLE "Demand_procedures" (
     "id_demand" integer,
     "id_procedures" integer

@@ -21,7 +21,7 @@ class Permit extends AbstractMigration
      * Migrate Up.
      */
     public function up(){
-        $scl = <<< SQL 
+        $sql = <<<SQL
         CREATE TABLE permit (
     id integer NOT NULL,
     name character varying(255),
