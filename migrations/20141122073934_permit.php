@@ -20,8 +20,8 @@ class Permit extends AbstractMigration
     /**
      * Migrate Up.
      */
-    public function up()
-    {$scl = <<< SQL 
+    public function up(){
+        $scl = <<< SQL 
         CREATE TABLE permit (
     id integer NOT NULL,
     name character varying(255),
@@ -37,7 +37,7 @@ CREATE SEQUENCE permit_id_seq
 
   ALTER SEQUENCE permit_id_seq OWNED BY permit.id;
   ALTER TABLE ONLY permit ALTER COLUMN id SET DEFAULT nextval('permit_id_seq'::regclass);  
-   SQL;
+SQL;
     }
 
     /**

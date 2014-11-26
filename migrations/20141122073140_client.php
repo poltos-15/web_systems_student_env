@@ -20,8 +20,8 @@ class Client extends AbstractMigration
     /**
      * Migrate Up.
      */
-    public function up()
-    {$sql = <<<SQL
+    public function up(){
+        $sql = <<<SQL
     CREATE TABLE client (
     id integer NOT NULL,
     surname character(50),
@@ -29,7 +29,7 @@ class Client extends AbstractMigration
     patronomic_name character(50),
     date_of_birtudey date,
     sex character(10),
-    "phone number" character varying(20),
+    "phone_number" character varying(20),
     passport character varying(20),
     demand_procedures character(50),
     login character varying(20),
@@ -45,8 +45,7 @@ class Client extends AbstractMigration
 
     ALTER SEQUENCE klient_id_seq OWNED BY client.id;
     ALTER TABLE ONLY client ALTER COLUMN id SET DEFAULT nextval('klient_id_seq'::regclass);
-    
-   SQL;
+SQL;
     }
 
     /**

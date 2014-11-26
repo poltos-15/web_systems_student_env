@@ -20,8 +20,8 @@ class Application extends AbstractMigration
     /**
      * Migrate Up.
      */
-    public function up()
-    {$scl = <<< SQL
+    public function up(){
+        $scl = <<< SQL
         CREATE TABLE application (
     id integer NOT NULL,
     id_pass integer,
@@ -41,7 +41,8 @@ CREATE SEQUENCE application_id_seq
 ALTER SEQUENCE application_id_seq OWNED BY application.id;
 ALTER TABLE ONLY application ALTER COLUMN id SET DEFAULT nextval('application_id_seq'::regclass);
 
-    SQL;}
+SQL;
+}
 
     /**
      * Migrate Down.

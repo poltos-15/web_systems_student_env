@@ -20,8 +20,8 @@ class Procedure extends AbstractMigration
     /**
      * Migrate Up.
      */
-    public function up()
-    {$scl = <<< SQL
+    public function up(){
+        $scl = <<< SQL
     CREATE TABLE procedure (
     id integer NOT NULL,
     name character varying(20),
@@ -36,8 +36,8 @@ CREATE SEQUENCE procedure_id_seq
 ALTER SEQUENCE procedure_id_seq OWNED BY procedure.id;
 ALTER TABLE ONLY procedure ALTER COLUMN id SET DEFAULT nextval('procedure_id_seq'::regclass);
 
-
-    SQL;}
+SQL;
+    }
 
     /**
      * Migrate Down.

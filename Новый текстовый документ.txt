@@ -8,103 +8,345 @@ SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
 SET search_path = public, pg_catalog;
 
---
--- Data for Name: Demand _procedures; Type: TABLE DATA; Schema: public; Owner: postgres
---
+SET default_tablespace = '';
 
-
+SET default_with_oids = false;
 
 --
--- Data for Name: admin; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: Demand _procedures; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
+CREATE TABLE "Demand _procedures" (
+    "Id_demand" integer,
+    "Id_procedures" integer
+);
 
 
---
--- Name: admin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('admin_id_seq', 1, false);
-
-
---
--- Data for Name: application; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
+ALTER TABLE public."Demand _procedures" OWNER TO postgres;
 
 --
--- Name: application_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: admin; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
-SELECT pg_catalog.setval('application_id_seq', 1, false);
+CREATE TABLE admin (
+    id integer NOT NULL,
+    login character varying(50),
+    password character varying(20)
+);
 
 
---
--- Data for Name: availability_of_rooms; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Name: availability_of_rooms_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('availability_of_rooms_id_seq', 1, false);
-
+ALTER TABLE public.admin OWNER TO postgres;
 
 --
--- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: admin_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
+CREATE SEQUENCE admin_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
+
+ALTER TABLE public.admin_id_seq OWNER TO postgres;
 
 --
--- Name: klient_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: admin_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('klient_id_seq', 1, false);
+ALTER SEQUENCE admin_id_seq OWNED BY admin.id;
 
 
 --
--- Data for Name: permit; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: application; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
+CREATE TABLE application (
+    id integer NOT NULL,
+    id_pass integer,
+    date_of_arrival date,
+    date_of_eparture date,
+    id_client integer,
+    status integer
+);
+
+
+ALTER TABLE public.application OWNER TO postgres;
+
+--
+-- Name: application_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE application_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.application_id_seq OWNER TO postgres;
+
+--
+-- Name: application_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE application_id_seq OWNED BY application.id;
 
 
 --
--- Name: permit_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: availability_of_rooms; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
-SELECT pg_catalog.setval('permit_id_seq', 1, false);
+CREATE TABLE availability_of_rooms (
+    id integer NOT NULL,
+    room_number integer,
+    type_id integer
+);
+
+
+ALTER TABLE public.availability_of_rooms OWNER TO postgres;
+
+--
+-- Name: availability_of_rooms_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE availability_of_rooms_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.availability_of_rooms_id_seq OWNER TO postgres;
+
+--
+-- Name: availability_of_rooms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE availability_of_rooms_id_seq OWNED BY availability_of_rooms.id;
 
 
 --
--- Data for Name: procedure; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: client; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
+CREATE TABLE client (
+    id integer NOT NULL,
+    surname character(50),
+    name character(50),
+    patronomic_name character(50),
+    date_of_birtudey date,
+    sex character(10),
+    "phone number" character varying(20),
+    passport character varying(20),
+    demand_procedures character(50),
+    login character varying(20),
+    password character varying(20)
+);
+
+
+ALTER TABLE public.client OWNER TO postgres;
+
+--
+-- Name: klient_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE klient_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.klient_id_seq OWNER TO postgres;
+
+--
+-- Name: klient_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE klient_id_seq OWNED BY client.id;
 
 
 --
--- Name: procedure_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: permit; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
-SELECT pg_catalog.setval('procedure_id_seq', 1, false);
+CREATE TABLE permit (
+    id integer NOT NULL,
+    name character varying(255),
+    prise integer
+);
+
+
+ALTER TABLE public.permit OWNER TO postgres;
+
+--
+-- Name: permit_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE permit_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.permit_id_seq OWNER TO postgres;
+
+--
+-- Name: permit_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE permit_id_seq OWNED BY permit.id;
 
 
 --
--- Data for Name: room_name; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: procedure; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
+CREATE TABLE procedure (
+    id integer NOT NULL,
+    name character varying(20),
+    price integer
+);
+
+
+ALTER TABLE public.procedure OWNER TO postgres;
+
+--
+-- Name: procedure_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE procedure_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.procedure_id_seq OWNER TO postgres;
+
+--
+-- Name: procedure_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE procedure_id_seq OWNED BY procedure.id;
 
 
 --
--- Name: room_name_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: room_name; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
-SELECT pg_catalog.setval('room_name_id_seq', 1, false);
+CREATE TABLE room_name (
+    id integer NOT NULL,
+    type_number character varying(20),
+    type_id integer,
+    price integer
+);
+
+
+ALTER TABLE public.room_name OWNER TO postgres;
+
+--
+-- Name: room_name_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE room_name_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.room_name_id_seq OWNER TO postgres;
+
+--
+-- Name: room_name_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE room_name_id_seq OWNED BY room_name.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY admin ALTER COLUMN id SET DEFAULT nextval('admin_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY application ALTER COLUMN id SET DEFAULT nextval('application_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY availability_of_rooms ALTER COLUMN id SET DEFAULT nextval('availability_of_rooms_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY client ALTER COLUMN id SET DEFAULT nextval('klient_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY permit ALTER COLUMN id SET DEFAULT nextval('permit_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY procedure ALTER COLUMN id SET DEFAULT nextval('procedure_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY room_name ALTER COLUMN id SET DEFAULT nextval('room_name_id_seq'::regclass);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --

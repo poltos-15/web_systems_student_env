@@ -20,8 +20,8 @@ class AvailabilityOfRooms extends AbstractMigration
     /**
      * Migrate Up.
      */
-    public function up()
-    {$scl = <<< SQL
+    public function up(){
+        $scl = <<< SQL
     CREATE TABLE availability_of_rooms (
     id integer NOT NULL,
     room_number integer,
@@ -38,7 +38,8 @@ CREATE SEQUENCE availability_of_rooms_id_seq
 ALTER SEQUENCE availability_of_rooms_id_seq OWNED BY availability_of_rooms.id;
 ALTER TABLE ONLY availability_of_rooms ALTER COLUMN id SET DEFAULT nextval('availability_of_rooms_id_seq'::regclass);
 
-    SQL;}
+SQL;
+    }
 
     /**
      * Migrate Down.

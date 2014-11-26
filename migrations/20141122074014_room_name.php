@@ -20,8 +20,8 @@ class RoomName extends AbstractMigration
     /**
      * Migrate Up.
      */
-    public function up()
-    {$scl = <<< SQL
+    public function up(){
+        $scl = <<< SQL
     CREATE TABLE room_name (
     id integer NOT NULL,
     type_number character varying(20),
@@ -36,7 +36,8 @@ CREATE SEQUENCE room_name_id_seq
     CACHE 1;
     ALTER SEQUENCE room_name_id_seq OWNED BY room_name.id;
     ALTER TABLE ONLY room_name ALTER COLUMN id SET DEFAULT nextval('room_name_id_seq'::regclass);
-    SQL;}
+SQL;
+    }
 
     /**
      * Migrate Down.
