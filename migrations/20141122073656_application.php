@@ -24,7 +24,7 @@ class Application extends AbstractMigration
         $sql = <<< SQL
         CREATE TABLE application (
     id integer PRIMARY KEY NOT NULL,
-    id_pass integer,
+    id_pass integer NOT NULL,
     date_of_arrival date,
     date_of_eparture date,
     id_client integer,

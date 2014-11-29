@@ -24,14 +24,10 @@ class OccupiedRooms extends AbstractMigration
     {
         $sql= <<<SQL
     CREATE TABLE occupied_rooms (
-    "id_room-book" integer,
+    "id_room-book" integer NOT NULL,
     date date,
     id_zajav integer
 );
-
-
-
-ALTER TABLE public.occupied_rooms OWNER TO postgres;
 SQL;
 $this->execute($sql);     
     }

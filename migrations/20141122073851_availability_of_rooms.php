@@ -25,7 +25,7 @@ class AvailabilityOfRooms extends AbstractMigration
     CREATE TABLE availability_of_rooms (
     id integer PRIMARY KEY NOT NULL,
     room_number integer,
-    type_id integer
+    type_id integer NOT NULL
 );
 
 CREATE SEQUENCE availability_of_rooms_id_seq

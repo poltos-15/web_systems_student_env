@@ -25,7 +25,7 @@ class Procedure extends AbstractMigration
     CREATE TABLE procedure (
     id integer PRIMARY KEY NOT NULL,
     name character varying(20),
-    price integer
+    price integer NOT NULL
 );
 CREATE SEQUENCE procedure_id_seq
     START WITH 1

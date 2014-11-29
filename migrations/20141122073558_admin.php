@@ -24,8 +24,8 @@ class Admin extends AbstractMigration
         $sql = <<< SQL
         CREATE TABLE admin (
     id integer PRIMARY KEY NOT NULL,
-    login character varying(50),
-    password character varying(20)
+    login character varying(50) NOT NULL,
+    password character varying(20) NOT NULL
     );
     CREATE SEQUENCE admin_id_seq
     START WITH 1

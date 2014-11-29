@@ -32,8 +32,8 @@ class Client extends AbstractMigration
     phone_number varchar(20),
     passport varchar(20),
     demand_procedures varchar(50),
-    login varchar(20),
-    password varchar(20)
+    login varchar(20) NOT NULL,
+    password varchar(20) NOT NULL
 );
 
     CREATE SEQUENCE client_id_seq

@@ -12,7 +12,7 @@ class ForenignKeys extends AbstractMigration
      *
      * Uncomment this method if you would like to use it.
      *
-    *public function change()
+   * public function change()
     *{
     *}
     */
@@ -21,14 +21,13 @@ class ForenignKeys extends AbstractMigration
      * Migrate Up.
      */
     public function up()
-    {
-    $sql = <<< SQL
-    ALTER TABLE ONLY "Demand _procedures"
-    ADD CONSTRAINT "Demand _procedures_Id_demand_fkey" FOREIGN KEY ("Id_demand") REFERENCES application(id);
+    {$sql = <<< SQL
+    ALTER TABLE ONLY "Demand_procedures"
+    ADD CONSTRAINT "Demand_procedures_Id_demand_fkey" FOREIGN KEY ("id_demand") REFERENCES application(id);
 
 
-ALTER TABLE ONLY "Demand _procedures"
-    ADD CONSTRAINT "Demand _procedures_Id_procedures_fkey" FOREIGN KEY ("Id_procedures") REFERENCES procedure(id);
+ALTER TABLE ONLY "Demand_procedures"
+    ADD CONSTRAINT "Demand_procedures_Id_procedures_fkey" FOREIGN KEY ("id_procedures") REFERENCES procedure(id);
 
 ALTER TABLE ONLY application
     ADD CONSTRAINT fk_application2 FOREIGN KEY (id_pass) REFERENCES permit(id);
@@ -37,13 +36,14 @@ ALTER TABLE ONLY application
 
 ALTER TABLE ONLY availability_of_rooms
     ADD CONSTRAINT availability_of_rooms_type_id_fkey FOREIGN KEY (type_id) REFERENCES room_name(id);
-LTER TABLE ONLY occupied_rooms
+ALTER TABLE ONLY occupied_rooms
     ADD CONSTRAINT "occupied_rooms_id_room-book_fkey" FOREIGN KEY ("id_room-book") REFERENCES availability_of_rooms(id);
 ALTER TABLE ONLY occupied_rooms
     ADD CONSTRAINT occupied_rooms_id_zajav_fkey FOREIGN KEY (id_zajav) REFERENCES application(id);
 
 SQL;
-$this->execute($sql); 
+$this->execute($sql);
+    
     }
 
     /**
