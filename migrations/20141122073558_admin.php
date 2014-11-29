@@ -35,6 +35,8 @@ class Admin extends AbstractMigration
     CACHE 1;
     ALTER SEQUENCE admin_id_seq OWNED BY admin.id;
     ALTER TABLE ONLY admin ALTER COLUMN id SET DEFAULT nextval('admin_id_seq'::regclass);
+    ALTER TABLE ONLY admin
+    ADD CONSTRAINT pk_admin PRIMARY KEY (id);
 SQL;
 }
 

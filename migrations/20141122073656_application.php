@@ -40,7 +40,8 @@ CREATE SEQUENCE application_id_seq
     
 ALTER SEQUENCE application_id_seq OWNED BY application.id;
 ALTER TABLE ONLY application ALTER COLUMN id SET DEFAULT nextval('application_id_seq'::regclass);
-
+ALTER TABLE ONLY application
+    ADD CONSTRAINT pk_application PRIMARY KEY (id);
 SQL;
 }
 

@@ -37,7 +37,8 @@ CREATE SEQUENCE availability_of_rooms_id_seq
 
 ALTER SEQUENCE availability_of_rooms_id_seq OWNED BY availability_of_rooms.id;
 ALTER TABLE ONLY availability_of_rooms ALTER COLUMN id SET DEFAULT nextval('availability_of_rooms_id_seq'::regclass);
-
+ALTER TABLE ONLY availability_of_rooms
+    ADD CONSTRAINT pk_availability_of_rooms PRIMARY KEY (id);
 SQL;
     }
 

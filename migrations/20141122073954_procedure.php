@@ -35,7 +35,8 @@ CREATE SEQUENCE procedure_id_seq
     CACHE 1;
 ALTER SEQUENCE procedure_id_seq OWNED BY procedure.id;
 ALTER TABLE ONLY procedure ALTER COLUMN id SET DEFAULT nextval('procedure_id_seq'::regclass);
-
+ALTER TABLE ONLY procedure
+    ADD CONSTRAINT pk_procedure PRIMARY KEY (id);
 SQL;
     }
 

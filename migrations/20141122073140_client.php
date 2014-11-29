@@ -45,6 +45,9 @@ class Client extends AbstractMigration
 
     ALTER SEQUENCE klient_id_seq OWNED BY client.id;
     ALTER TABLE ONLY client ALTER COLUMN id SET DEFAULT nextval('klient_id_seq'::regclass);
+    ALTER TABLE ONLY client
+    ADD CONSTRAINT pk_client PRIMARY KEY (id);
+    
 SQL;
     }
 

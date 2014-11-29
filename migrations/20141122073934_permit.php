@@ -37,6 +37,8 @@ CREATE SEQUENCE permit_id_seq
 
   ALTER SEQUENCE permit_id_seq OWNED BY permit.id;
   ALTER TABLE ONLY permit ALTER COLUMN id SET DEFAULT nextval('permit_id_seq'::regclass);  
+    ALTER TABLE ONLY permit
+    ADD CONSTRAINT pk_permit PRIMARY KEY (id);
 SQL;
     }
 
