@@ -43,6 +43,7 @@ ALTER TABLE ONLY occupied_rooms
     ADD CONSTRAINT occupied_rooms_id_zajav_fkey FOREIGN KEY (id_zajav) REFERENCES application(id);
 
 SQL;
+$this->execute($sql); 
     }
 
     /**

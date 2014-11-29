@@ -23,32 +23,31 @@ class Client extends AbstractMigration
     public function up(){
         $sql = <<<SQL
     CREATE TABLE client (
-    id integer NOT NULL,
-    surname character(50),
-    name character(50),
-    patronomic_name character(50),
+    id integer PRIMARY KEY NOT NULL,
+    surname varchar(50),
+    name varchar(50),
+    patronomic varchar(50),
     date_of_birtudey date,
-    sex character(10),
-    "phone_number" character varying(20),
-    passport character varying(20),
-    demand_procedures character(50),
-    login character varying(20),
-    password character varying(20)
+    sex boolean,
+    phone_number varchar(20),
+    passport varchar(20),
+    demand_procedures varchar(50),
+    login varchar(20),
+    password varchar(20)
 );
 
-    CREATE SEQUENCE klient_id_seq
+    CREATE SEQUENCE client_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
 
-    ALTER SEQUENCE klient_id_seq OWNED BY client.id;
-    ALTER TABLE ONLY client ALTER COLUMN id SET DEFAULT nextval('klient_id_seq'::regclass);
-    ALTER TABLE ONLY client
-    ADD CONSTRAINT pk_client PRIMARY KEY (id);
+    ALTER SEQUENCE client_id_seq OWNED BY client.id;
+    ALTER TABLE ONLY client ALTER COLUMN id SET DEFAULT nextval('client_id_seq'::regclass);
     
 SQL;
+$this->execute($sql); 
     }
 
     /**

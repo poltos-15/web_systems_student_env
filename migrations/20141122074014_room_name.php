@@ -21,9 +21,9 @@ class RoomName extends AbstractMigration
      * Migrate Up.
      */
     public function up(){
-        $scl = <<< SQL
+        $sql = <<< SQL
     CREATE TABLE room_name (
-    id integer NOT NULL,
+    id integer PRIMARY KEY NOT NULL,
     type_number character varying(20),
     type_id integer,
     price integer
@@ -36,9 +36,9 @@ CREATE SEQUENCE room_name_id_seq
     CACHE 1;
     ALTER SEQUENCE room_name_id_seq OWNED BY room_name.id;
     ALTER TABLE ONLY room_name ALTER COLUMN id SET DEFAULT nextval('room_name_id_seq'::regclass);
-     ALTER TABLE ONLY room_name
-    ADD CONSTRAINT pk_room_name PRIMARY KEY (id);
+    
 SQL;
+$this->execute($sql); 
     }
 
     /**

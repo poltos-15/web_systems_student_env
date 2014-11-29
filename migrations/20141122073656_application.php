@@ -21,9 +21,9 @@ class Application extends AbstractMigration
      * Migrate Up.
      */
     public function up(){
-        $scl = <<< SQL
+        $sql = <<< SQL
         CREATE TABLE application (
-    id integer NOT NULL,
+    id integer PRIMARY KEY NOT NULL,
     id_pass integer,
     date_of_arrival date,
     date_of_eparture date,
@@ -40,9 +40,9 @@ CREATE SEQUENCE application_id_seq
     
 ALTER SEQUENCE application_id_seq OWNED BY application.id;
 ALTER TABLE ONLY application ALTER COLUMN id SET DEFAULT nextval('application_id_seq'::regclass);
-ALTER TABLE ONLY application
-    ADD CONSTRAINT pk_application PRIMARY KEY (id);
+
 SQL;
+$this->execute($sql); 
 }
 
     /**

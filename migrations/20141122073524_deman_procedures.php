@@ -27,6 +27,7 @@ class DemanProcedures extends AbstractMigration
     "id_procedures" integer
     );
 SQL;
+$this->execute($sql); 
     }
 
     /**

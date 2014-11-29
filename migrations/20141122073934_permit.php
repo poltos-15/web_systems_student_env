@@ -23,7 +23,7 @@ class Permit extends AbstractMigration
     public function up(){
         $sql = <<<SQL
         CREATE TABLE permit (
-    id integer NOT NULL,
+    id integer PRIMARY KEY NOT NULL,
     name character varying(255),
     prise integer
 );
@@ -37,9 +37,9 @@ CREATE SEQUENCE permit_id_seq
 
   ALTER SEQUENCE permit_id_seq OWNED BY permit.id;
   ALTER TABLE ONLY permit ALTER COLUMN id SET DEFAULT nextval('permit_id_seq'::regclass);  
-    ALTER TABLE ONLY permit
-    ADD CONSTRAINT pk_permit PRIMARY KEY (id);
+  
 SQL;
+$this->execute($sql); 
     }
 
     /**

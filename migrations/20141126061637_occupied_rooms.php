@@ -33,7 +33,7 @@ class OccupiedRooms extends AbstractMigration
 
 ALTER TABLE public.occupied_rooms OWNER TO postgres;
 SQL;
-    
+$this->execute($sql);     
     }
 
     /**
