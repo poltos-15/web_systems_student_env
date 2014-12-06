@@ -28,7 +28,7 @@ class Client extends AbstractMigration
     name varchar(50),
     patronomic varchar(50),
     date_of_birtudey date,
-    sex boolean,
+    sex boolean NOT NULL,
     phone_number varchar(20),
     passport varchar(20),
     demand_procedures varchar(50),

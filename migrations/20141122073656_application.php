@@ -40,6 +40,10 @@ CREATE SEQUENCE application_id_seq
     
 ALTER SEQUENCE application_id_seq OWNED BY application.id;
 ALTER TABLE ONLY application ALTER COLUMN id SET DEFAULT nextval('application_id_seq'::regclass);
+ALTER TABLE application
+  ADD CONSTRAINT chk_date CHECK (date_of_arrival <= date_of_eparture);
+
+  
 
 SQL;
 $this->execute($sql); 

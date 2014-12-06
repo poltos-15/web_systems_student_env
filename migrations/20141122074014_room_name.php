@@ -25,7 +25,6 @@ class RoomName extends AbstractMigration
     CREATE TABLE room_name (
     id integer PRIMARY KEY NOT NULL,
     type_number character varying(20),
-    type_id integer,
     price integer
 );
 CREATE SEQUENCE room_name_id_seq
